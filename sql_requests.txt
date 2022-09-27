@@ -1,0 +1,27 @@
+//создание таблицы animals с полями id и парода животного и колличество животных
+CREATE TABLE animals(
+id int(11) NOT NULL PRIMARY KEY,
+breed varchar(70)
+count_animals int(11)
+)
+
+// заполнение таблицы animals
+INSERT INTO animals (id, breed, count_animals) VALUES (0,"Сиамская кошка", 5)
+
+// заменяет в строке count на 2
+UPDATE animals SET  count = 2 WHERE breed = "Сиамская кошка",
+
+//вывод всехзаписей где id = 1
+SELECT * FROM animals WHERE id = 1
+
+//объеденить таблицы по одинаковым id; 
+//вывести id и count из разных таблиц которые совпадают 
+SELECT animals.id, animals.count_animals,  owners.name , Pet_Food.count, Pet_Accessories.count 
+    FROM animals JOIN owners 
+    ON animals.id = owners.id JOIN Pet_Food 
+    ON animals.id = Pet_Food.id JOIN Pet_Accessories
+    ON animals.id = Pet_Accessories.id
+
+//вывести количество id у которых count_animals = 2
+SELECT COUNT(id) as count  FROM animals 
+WHERE animals.count_animals = 2
